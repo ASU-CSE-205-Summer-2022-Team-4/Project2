@@ -14,23 +14,28 @@
 // AUTHOR: Kari McBride     ASURITE ID: kemcbri2  EMAIL: kemcbri2@asu.edu
 //********************************************************************************************************
 public class OnlineStudent extends Student {
-    private boolean mTechFee;
     
-    public OnlineStudent(String pFirstName, String pLastName) {
-        //TODO, CTOR
+    private boolean mTechFee;   // Certain OnlineStudent's pay an additional technology fee. This instance variable will be true if the technology fee applies and false if it does not.
+    
+    public OnlineStudent(String pId, String pFirstName, String pLastName) {
+        super(pId, pFirstName, pLastName);
     }
     
+    @Override
     public void calcTuition() {
-        //TODO
-    }
+        double t = getCredits() * TuitionConstants.ONLINE_CREDIT_RATE;
+        if (getTechFee()) {
+            t = t + TuitionConstants.ONLINE_TECH_FEE;
+        } // end if
+        setTuition(t);
+    } // end calcTuition
     
     public boolean getTechFee() {
-        //todo
-        return false;
+        return mTechFee;
     }
     
     public void setTechFee(boolean pTechFee) {
-        //TODO
+        mTechFee = pTechFee;
     }
 
 } // end OnlineStudent

@@ -16,33 +16,51 @@
 public class OnCampusStudent extends Student {
     public final int RESIDENT = 1;
     public final int NON_RESIDENT = 2;
-    private int mResident;
-    private double mProgramFee;
+    private int mResident;  // RESIDENT if the OnCampusStudent is a resident, NON_RESIDENT for non-resident.
+    private double mProgramFee; // Certain OnCampusStudents pay an additional program fee; may be 0.
     
-    public OnCampusStudent(String Id, String pFirstName, String pLastName) {
-        //TODO, CTOR
+    public OnCampusStudent(String pId, String pFirstName, String pLastName) {
+        //TODO, CTOR, Must call the superclass constructor passing pId, pFirstName, and pLastName as parameters.
+        super(pId, pFirstName, pLastName);
     }
     
+    
+    /*
+     * Must implement the rules described in §3 Background to calculate the tuition for either a resident or non-resident student. 
+     * Note that we cannot directly access the mTuition instance variable of an OnCampusStudent because it is intentionally declared as private in Student. 
+     * So how do we write to mTuition? By calling the protected setTuition() mutator method that is inherited from Student. 
+     * Any why is setTuition() protected? Because it is only intended to be called from subclasses of Student and not from classes that are not part of the Student class hierarchy.
+     * 
+     * Override Method calcTuititon() Returns Nothing
+    */
     public void calcTuition() {
-        //TODO, OVERRIDE
-    }
+        double t;
+        if (getResidency()==RESIDENT) {
+            t = TuitionConstants.ONCAMP_RES_BASE;
+        } else {
+            t = TuitionConstants.ONCAMP_NONRES_BASE;
+        } // end if else
+        t = t + getProgramFee();
+        if (getCredits() > TuitionConstants.ONCAMP_MAX_CREDITS) {
+            t = t + (getCredits() - TuitionConstants.ONCAMP_MAX_CREDITS)*TuitionConstants.ONCAMP_ADD_CREDITS;
+        } // end if
+        setTuition(t);
+    } // end calcTuition
     
     public double getProgramFee() {
-        //TODO
-        return 0.0;
+        return mProgramFee;
     }
     
-    public int getResidency() {
-        //TODO
-        return 0;
+    public int getResidency() { 
+        return mResident;
     }
     
     public void setProgramFee(double pProgramFee) {
-        //TODO
+        mProgramFee = pProgramFee;
     }
     
     public void setResidency(int pResident) {
-        //TODO
+        mResident = pResident;
     }
 
-}
+} // end OnCampusStudent
