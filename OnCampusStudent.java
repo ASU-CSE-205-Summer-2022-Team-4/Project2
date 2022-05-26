@@ -14,8 +14,8 @@
 // AUTHOR: Kari McBride     ASURITE ID: kemcbri2  EMAIL: kemcbri2@asu.edu
 //********************************************************************************************************
 public class OnCampusStudent extends Student {
-    public final int RESIDENT = 1;
-    public final int NON_RESIDENT = 2;
+    public final static int RESIDENT = 1;
+    public final static int NON_RESIDENT = 2;
     private int mResident;  // RESIDENT if the OnCampusStudent is a resident, NON_RESIDENT for non-resident.
     private double mProgramFee; // Certain OnCampusStudents pay an additional program fee; may be 0.
     
