@@ -223,5 +223,9 @@ public class Main {
          * Enhanced ForEach Close the output file
          */
         PrintWriter out = new PrintWriter("p02-tuition.txt");
+        for(Student student : pStudentList){
+            System.out.printf("%-16s%-20s%-15s%8.2f\n", student.getId(), student.getLastName(), student.getFirstName(), student.getTuition());
+        }
+        out.close();
     } // end writeFile
 } // end Main
