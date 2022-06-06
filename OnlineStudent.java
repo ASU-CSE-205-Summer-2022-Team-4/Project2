@@ -15,12 +15,22 @@
 //********************************************************************************************************
 public class OnlineStudent extends Student {
     
-    private boolean mTechFee;   // Certain OnlineStudent's pay an additional technology fee. This instance variable will be true if the technology fee applies and false if it does not.
+    private boolean mTechFee;   // Certain OnlineStudents pay an additional technology fee. This instance variable will be true if the technology fee applies and false if it does not.
     
+    /**
+     * OnlineStudent CTOR
+     * @param pId Student ID
+     * @param pFirstName Student First Name
+     * @param pLastName Student Last Name
+     */
     public OnlineStudent(String pId, String pFirstName, String pLastName) {
         super(pId, pFirstName, pLastName);
     }
     
+    /**
+     * Override abstract method from Student
+     * Calculate the student's tuition based on credits and tech fees
+     */
     @Override
     public void calcTuition() {
         double t = getCredits() * TuitionConstants.ONLINE_CREDIT_RATE;
@@ -30,10 +40,18 @@ public class OnlineStudent extends Student {
         setTuition(t);
     } // end calcTuition
     
+    /**
+     * Accessor method for tech fee
+     * @return mTechFee Student's tech fee
+     */
     public boolean getTechFee() {
         return mTechFee;
     }
     
+    /**
+     * Mutator method for tech fee
+     * @param pTechFee Student's tech fee
+     */
     public void setTechFee(boolean pTechFee) {
         mTechFee = pTechFee;
     }

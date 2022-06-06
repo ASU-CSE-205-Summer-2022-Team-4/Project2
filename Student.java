@@ -2,7 +2,7 @@
 // CLASS: Student (Student.java)
 //
 // DESCRIPTION
-// Creates a Student object
+// Creates an abstract Student class
 //
 // COURSE AND PROJECT INFO
 // CSE205 Object Oriented Programming and Data Structures, Summer 2022
@@ -29,23 +29,20 @@ public abstract class Student implements Comparable<Student> {
     
 
     /**
-     * Creates a Student object and initializes the mId, mFirstName, and mLastName instance
+     * Student ctor; initializes the mId, mFirstName, and mLastName instance
      * variables.
+     * @param pId Student ID
+     * @param pFirstName Student first name
+     * @param pLastName Student Last Name
      */
     public Student(String pId, String pFirstName, String pLastName) {
-
         mId = pId;
         mFirstName = pFirstName;
         mLastName = pLastName;
     } // end constructor
     
     /**
-     * calcTuition() is to be implemented by subclasses of Student. Remember that abstract methods
-     * are not implemented in a superclass but must either be implemented in a subclass, or if not,
-     * then the subclass also becomes an abstract class. The reason calcTuition() is abstract
-     * and intended to be implemented by the subclasses of Student is because how we calculate the
-     * tuition for an OnCampusStudent is different than how we calculate the tuition for an Online-
-     * Student.
+     * Abstract method to be implemented by subclasses
      */
     abstract public void calcTuition();
     
@@ -65,7 +62,6 @@ public abstract class Student implements Comparable<Student> {
      * method on the two mId strings of 'this' Student and pStudent and return whatever that method
      * returns.
      */
-    
     @Override
     public int compareTo(Student pStudent) {
         // Implements the compareTo() method of the Comparable<Student> interface. 
@@ -81,6 +77,7 @@ public abstract class Student implements Comparable<Student> {
 
     /**
      * Accessor method for mCredits.
+     * @return mCredits Student credits taken
      */
     public int getCredits() {
         return mCredits;
@@ -88,6 +85,7 @@ public abstract class Student implements Comparable<Student> {
 
     /**
      * Accessor method for mFirstName.
+     * @return mFirstName Student first name
      */
     public String getFirstName() {
         return mFirstName;
@@ -95,6 +93,7 @@ public abstract class Student implements Comparable<Student> {
 
     /**
      * Accessor method for mId.
+     * @return mId Student ID
      */
     public String getId() {
         return mId;
@@ -102,6 +101,7 @@ public abstract class Student implements Comparable<Student> {
 
     /**
      * Accessor method for mLastName.
+     * @return mLastName Student last name
      */
     public String getLastName() {
         return mLastName;
@@ -109,6 +109,7 @@ public abstract class Student implements Comparable<Student> {
 
     /**
      * Accessor method for mTuition.
+     * @return mTuition Student tuition cost
      */
     public double getTuition() {
         return mTuition;
@@ -116,6 +117,7 @@ public abstract class Student implements Comparable<Student> {
 
     /**
      * Mutator method for mCredits.
+     * @param pCredits Student credits taken
      */
     public void setCredits(int pCredits) {
         mCredits = pCredits;
@@ -123,6 +125,7 @@ public abstract class Student implements Comparable<Student> {
 
     /**
      * Mutator method for mFirstName.
+     * @param pFirstName Student first name
      */
     public void setFirstName(String pFirstName) {
         mFirstName = pFirstName;
@@ -130,6 +133,7 @@ public abstract class Student implements Comparable<Student> {
 
     /**
      * Mutator method for mId.
+     * @param pId Student ID
      */
     public void setId(String pId) {
         mId = pId;
@@ -137,6 +141,7 @@ public abstract class Student implements Comparable<Student> {
 
     /**
      * Mutator method for mLastName.
+     * @param pLastName Student last name
      */
     public void setLastName(String pLastName) {
         mLastName = pLastName;
@@ -144,6 +149,7 @@ public abstract class Student implements Comparable<Student> {
 
     /**
      * Mutator method for mTuition.
+     * @param pTuition Student tuition cost
      */
     protected void setTuition(double pTuition) {
         mTuition = pTuition;
